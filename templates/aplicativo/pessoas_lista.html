@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Pessoas</title>
+</head>
+<body>
+
+<h2>Adicionar Pessoa</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Adicionar</button>
+</form>
+
+</body>
+</html>
