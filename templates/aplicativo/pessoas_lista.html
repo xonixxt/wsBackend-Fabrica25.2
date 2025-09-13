@@ -12,6 +12,22 @@
     {{ form.as_p }}
     <button type="submit">Adicionar</button>
 </form>
+<h2>Lista de Pessoas</h2>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <th>Nome</th>
+        <th>Ações</th>
+    </tr>
+    {% for pessoa in pessoas %}
+    <tr>
+        <td><a href="{% url 'aplicativo:detalhes_pessoa' pessoa.pk %}">{{ pessoa.nome }}</a></td>
+    {% empty %}
+    <tr>
+        <td colspan="2">Nenhuma pessoa cadastrada.</td>
+    </tr>
+    {% endfor %}
+</table>
 
 </body>
 </html>
