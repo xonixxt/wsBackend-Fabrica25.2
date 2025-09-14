@@ -29,6 +29,18 @@ def pessoa_excluir(request, pk):
     pessoa.delete()
     return redirect('aplicativo:pessoas_lista')
 
+def pessoa_editar(request, pk):
+    pessoa = get_object_or_404(PessoaModel, pk=pk)
+    if request.method == "POST":
+        form = PessoaForm(request.POST, instance=pessoa)
+        if form.is_valid():
+            form.save()
+            return redirect("aplicativo:pessoas_lista")
+    else:
+        form = PessoaForm(instance=pessoa)
+
+    return render(request, "aplicativo/pessoa_editar.html", {"form": form, "pessoa": pessoa})
+
 
 
 # Create your views here.

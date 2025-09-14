@@ -22,7 +22,9 @@
     {% for pessoa in pessoas %}
     <tr>
         <td><a href="{% url 'aplicativo:detalhes_pessoa' pessoa.pk %}">{{ pessoa.nome }}</a></td>
-        <td><a href="{% url 'aplicativo:pessoa_excluir' pessoa.id %}">Excluir</a></td>
+        <td><a href="{% url 'aplicativo:pessoa_editar' pessoa.id %}">Editar</a>
+        <a href="{% url 'aplicativo:pessoa_excluir' pessoa.id %}">Excluir</a></td>
+    </tr>
     {% empty %}
     <tr>
         <td colspan="2">Nenhuma pessoa cadastrada.</td>

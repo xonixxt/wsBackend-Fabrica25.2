@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Editar Pessoa</title>
+</head>
+<body>
+
+<h2>Editar {{ pessoa.nome }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+</form>
+
+<a href="{% url 'aplicativo:pessoas_lista' %}">Voltar</a>
+
+</body>
+</html>
