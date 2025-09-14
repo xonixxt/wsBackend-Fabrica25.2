@@ -3,6 +3,33 @@
 <head>
     <meta charset="utf-8">
     <title>Detalhes da Pessoa</title>
+    <style>
+body {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('https://4kwallpapers.com/images/walls/thumbs_3t/23208.jpg') center/cover no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+a {
+    color: #ffd700;
+    text-decoration: none;
+}
+a:hover {
+    color: #ff4500;
+}
+</style>
 </head>
 <body>
     <h1>{{ pessoa.nome }}</h1>
