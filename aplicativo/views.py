@@ -24,6 +24,11 @@ def detalhes_pessoa(request, pk):
         personagem = get_personagem_por_id(pessoa.personagem_favorito)
     return render(request, 'aplicativo/detalhes_pessoa.html', {'pessoa': pessoa, 'personagem': personagem})
 
+def pessoa_excluir(request, pk):
+    pessoa = get_object_or_404(PessoaModel, pk=pk)
+    pessoa.delete()
+    return redirect('aplicativo:pessoas_lista')
+
 
 
 # Create your views here.
