@@ -9,7 +9,7 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
@@ -19,6 +19,7 @@ body {
     color: white;
     text-align: center;
     position: relative;
+    padding-top: 30px;
 }
 
 body::before {
@@ -31,6 +32,7 @@ body::before {
 
 form {
     margin-top: 15px;
+    margin-bottom: 30px;
 }
 
 input[type="text"] {
@@ -52,6 +54,30 @@ a {
 a:hover {
     color: #ff4500;
 }
+.personagem-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    gap: 20px;
+    text-align: left;
+}
+
+.personagem-container .col-esquerda,
+.personagem-container .col-direita {
+    flex: 1;
+}
+
+.personagem-container .col-centro {
+    flex: 0 0 auto; /* tamanho da imagem não expande */
+    text-align: center;
+}
+
+img.personagem-imagem {
+    max-width: 200px;
+    display: block;
+}
 </style>
 </head>
 <body>
@@ -65,7 +91,21 @@ a:hover {
 
 {% if personagem %}
     <h2>{{ personagem.name }}</h2>
-    <p>ID: {{ personagem.id }}</p>
+
+    <div class="personagem-container">
+        <div class="col-esquerda">
+            <p><strong>ID:</strong> {{ personagem.id }}</p>
+            <p><strong>Raça:</strong> {{ personagem.race }}</p>
+            <p><strong>Gênero:</strong> {{ personagem.gender }}</p>
+        </div>
+        <div class="col-centro">
+            <img src="{{ personagem.image }}" alt="{{ personagem.name }}" class="personagem-imagem">
+        </div>
+        <div class="col-direita">
+            <p><strong>Descrição:</strong> {{ personagem.description }}</p>
+        </div>
+    </div>
+
 {% elif nome %}
     <p>Personagem não encontrado.</p>
 {% endif %}
