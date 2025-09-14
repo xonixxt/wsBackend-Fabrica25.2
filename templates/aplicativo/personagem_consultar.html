@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultar Personagem</title>
+</head>
+<body>
+<h1>Consultar Personagem</h1>
+
+<form method="get">
+    <input type="text" name="nome" placeholder="Digite o nome" value="{{ nome }}">
+    <button type="submit">Buscar</button>
+</form>
+
+{% if personagem %}
+    <h2>{{ personagem.name }}</h2>
+    <p>ID: {{ personagem.id }}</p>
+{% elif nome %}
+    <p>Personagem não encontrado.</p>
+{% endif %}
+<a href="{% url 'home' %}">Voltar para Home</a>
+
+</body>
+</html>

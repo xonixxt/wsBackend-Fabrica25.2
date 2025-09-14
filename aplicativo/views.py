@@ -1,7 +1,7 @@
 from .forms import PessoaForm
 from .models import PessoaModel
 from django.shortcuts import render, redirect, get_object_or_404
-from .api import get_personagem_por_id
+from .api import get_personagem_por_id, get_personagem_por_nome
 
 
 def lista_pessoas(request):
@@ -40,6 +40,11 @@ def pessoa_editar(request, pk):
         form = PessoaForm(instance=pessoa)
 
     return render(request, "aplicativo/pessoa_editar.html", {"form": form, "pessoa": pessoa})
+
+def personagem_consultar(request):
+    nome = request.GET.get('nome', '')
+    personagem = get_personagem_por_nome(nome) if nome else None
+    return render(request, 'aplicativo/personagem_consultar.html', {'personagem': personagem, 'nome': nome})
 
 
 
